@@ -8,6 +8,7 @@ import { StartDate } from './startDate.value-object'
 import { HttpResponse } from '../../helpers/http'
 
 export interface CellProps {
+  code: string
   model: Model
   color: Color
   brand: Brand
@@ -22,6 +23,10 @@ export class CellEntities {
 
   get model (): Model {
     return this.props.model
+  }
+
+  get code (): string {
+    return this.props.code
   }
 
   get color (): Color {
@@ -64,7 +69,6 @@ export class CellEntities {
         statusCode: 400
       }
     }
-
     return Success(cellEntities)
   }
 }
