@@ -15,7 +15,6 @@ export class AddCellController implements Controller {
       const requiredFields = ['model', 'price', 'brand', 'startDate', 'endDate', 'color', 'code']
       for (const field of requiredFields) {
         if (!httpRequest.body[field]) {
-          console.log('Entrou no erro', field)
           return badRequest(new MissingParamError(field))
         }
       }
