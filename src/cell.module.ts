@@ -9,6 +9,9 @@ import { AddCellController } from './presentation/add-cell/add-cell.controller'
 import { UpdateCellUseCase } from './domain/use-case/update-cell.use-case/update-cell.use-case'
 import { UpdateCellPersister } from './infra/db-mongo/update-cell/update-cell.persister'
 import { UpdateCellController } from './presentation/update-cell/update-cell.controller'
+import { GroupCellsUseCase } from './domain/use-case/goup-cell.use-case/group-cell.use-case'
+import { GroupCellsPersister } from './infra/db-mongo/group-cells/group-cells.persister'
+import { GroupCellsController } from './presentation/group-cells/group-cells.controlle'
 
 const cellMapper = new CellMapper()
 const saveCellPersister = new SaveCellPersister(cellMapper)
@@ -29,10 +32,18 @@ const updateCellUseCase = new UpdateCellUseCase(updateCellPersister)
 
 const updateCellController = new UpdateCellController(updateCellUseCase)
 
+const groupCellsPersister = new GroupCellsPersister()
+
+const groupCellsUseCase = new GroupCellsUseCase(groupCellsPersister)
+
+const groupCellsController = new GroupCellsController(groupCellsUseCase)
+
 export {
     addCellUseCase,
     loadCellUseCase,
     updateCellUseCase,
+    groupCellsUseCase,
+    groupCellsController,
     updateCellController,
     loadCellController,
     addCellController
