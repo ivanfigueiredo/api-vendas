@@ -9,4 +9,14 @@ describe('brand-value.value-object', () => {
     expect(brand.statusCode).toBe(400)
     expect(brand.body).toEqual(new InvalidParamError('brand'))
   })
+
+  it('should stop creating if tag is greater than 255', () => {
+    let text: String = ''
+    for (let i = 0; i < 260; i++) {
+      text.concat('11144454545455544')
+    }
+    const brand = Brand.create(text.toString())
+    expect(brand.statusCode).toBe(400)
+    expect(brand.body).toEqual(new InvalidParamError('brand'))
+  })
 })
