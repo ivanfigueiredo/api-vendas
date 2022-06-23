@@ -1,4 +1,4 @@
 
-export interface IGroupCells {
+export interface IGroupCellsRepo {
   loadGroupCells (): Promise<any[]>
 }
