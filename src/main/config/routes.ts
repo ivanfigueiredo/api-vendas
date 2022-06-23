@@ -3,7 +3,8 @@ import {
   addCellController,
   loadCellController,
   updateCellController,
-  groupCellsController
+  groupCellsController,
+  deleteCellController
 } from '../../cell.module'
 const router = Router()
 
@@ -24,6 +25,11 @@ router.put('/updateOne', async (req, res) => {
 
 router.get('/groupcells', async (req, res) => {
   const result = await groupCellsController.handle(req)
+  return res.json({ result }).send()
+})
+
+router.delete('/deleteOne', async (req, res) => {
+  const result = await deleteCellController.handle(req)
   return res.json({ result }).send()
 })
 
