@@ -5,7 +5,7 @@ import { IAddCellRepo } from '../../../repo/add-cell.repo'
 import { CellEntities } from '../../entities/cell-entities'
 import { Model } from '../../entities/model.object-value'
 import { AddCellUseCaseDto } from './add-cell.use-case.dto'
-import { InvalidParamError, ServerError } from '../../../helpers/errors'
+import { InvalidParamError } from '../../../helpers/errors'
 import { Brand } from '../../entities/brand.object-value'
 import { StartDate } from '../../entities/startDate.value-object'
 import { EndDate } from '../../entities/endDate.object-value'
@@ -17,6 +17,7 @@ export class AddCellUseCase {
 
   async execute (data: AddCellUseCaseDto): Promise<HttpResponse> {
     const result = CellEntities.create({
+      code: data.code.replace(/\s/g, ''),
       model: Model.create(data.model).body,
       brand: Brand.create(data.brand).body,
       startDate: StartDate.create(new Date(data.startDate)).body,
@@ -29,6 +30,6 @@ export class AddCellUseCase {
 
     const newCell = await this.addCellRepository
       .save(result.body)
-    return Success('')
+    return Success('ok')
   }
 }

@@ -1,5 +1,5 @@
 import { InvalidParamError } from './../../helpers/errors/invalid-param-error'
-import { badRequest } from './../../helpers/http-helper'
+import { badRequest, Success } from './../../helpers/http-helper'
 import { HttpRequest, HttpResponse } from '../../helpers/http'
 import { Controller } from './../controller/controller'
 import { LoadCellUseCase } from '../../domain/use-case/load-cell/load-cell.use-case'
@@ -15,5 +15,7 @@ export class LoadCellController implements Controller {
     if (!cell) {
       return badRequest(new InvalidParamError('CODE_NOT_FOUND'))
     }
+
+    return Success(cell)
   }
 }
