@@ -1,5 +1,5 @@
-import { CellProps } from '../domain/entities/cell-entities'
+import { UpdateCellDto } from '../domain/use-case/update-cell.use-case/update-cell.dto'
 
 export interface IUpdateCellRepo {
-  updateCellOne (code: string): Promise<any>
+  updateCellOne (data: UpdateCellDto): Promise<any>
 }
