@@ -19,4 +19,16 @@ describe('brand-value.value-object', () => {
     expect(brand.statusCode).toBe(400)
     expect(brand.body).toEqual(new InvalidParamError('brand'))
   })
+
+  it('should create success', () => {
+    const brand = Brand.create('111')
+    expect(brand.statusCode).toBe(200)
+    expect(brand.body).toBeTruthy()
+  })
+
+  it('should create success', async () => {
+    const brand = Brand.create(text)
+    expect(brand.statusCode).toBe(200)
+    expect(brand.body).toBeTruthy()
+  })
 })
