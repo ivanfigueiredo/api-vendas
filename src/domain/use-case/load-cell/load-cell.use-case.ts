@@ -17,6 +17,6 @@ export class LoadCellUseCase {
       return badRequest(new InvalidParamError('CODE_NOT_FOUND'))
     }
 
-    return Success('')
+    return Success(cell)
   }
 }
