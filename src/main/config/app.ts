@@ -18,7 +18,8 @@ export class App {
   databases () {
     const MONGO_HOST = 'localhost'
     const MONGO_DB = 'todo_db'
-    const URI = `mongodb://${MONGO_HOST}/${MONGO_DB}`
+    const PORT = '27018'
+    const URI = `mongodb://${MONGO_HOST}:${PORT}/${MONGO_DB}`
 
     mongoose.connect(URI)
       .then(
