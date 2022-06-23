@@ -19,4 +19,16 @@ describe('model-value.value-object', () => {
     expect(brand.statusCode).toBe(400)
     expect(brand.body).toEqual(new InvalidParamError('model'))
   })
+
+  it('should create success', () => {
+    const brand = Model.create('111')
+    expect(brand.statusCode).toBe(200)
+    expect(brand.body).toBeTruthy()
+  })
+
+  it('should create success', async () => {
+    const brand = Model.create(text)
+    expect(brand.statusCode).toBe(200)
+    expect(brand.body).toBeTruthy()
+  })
 })
