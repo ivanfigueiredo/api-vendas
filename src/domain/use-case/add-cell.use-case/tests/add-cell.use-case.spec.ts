@@ -14,4 +14,18 @@ describe('add-cell.use-case', () => {
   it('should br defined', async () => {
     expect(useCase).toBeDefined()
   })
+
+  it('should add cell with success', async () => {
+    const dto = {
+      code: '11012025',
+      model: 'AHFDJHERERH',
+      brand: 'brand',
+      startDate: new Date('2022/01/25'),
+      endDate: new Date(),
+      price: 333,
+      color: 'BLACK' as Color
+    }
+    const result = await useCase.execute(dto)
+    expect(result.body).toBeTruthy()
+  })
 })
